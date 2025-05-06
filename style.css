@@ -1,0 +1,157 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+/* Home Section */
+#home {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s forwards; /* Fade-in effect */
+}
+
+#home img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#home h1 {
+    margin: 20px 0;
+}
+
+/* About Section */
+#about {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards; /* Fade-in with delay */
+}
+
+#about h2 {
+    margin-bottom: 20px;
+}
+
+#about ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#about ul li {
+    margin: 5px 0;
+}
+
+/* Projects Section */
+#projects {
+    background-color: #f9f9f9;
+    padding: 50px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s 2s forwards; /* Fade-in with delay */
+}
+
+#projects h2 {
+    margin-bottom: 20px;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+/* Contact Section */
+#contact {
+    padding: 50px;
+    background-color: #fff;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s 3s forwards; /* Fade-in with delay */
+}
+
+#contact h2 {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Button Styles with Animation */
+.btn {
+    border: none;
+    width: 15em;
+    height: 5em;
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #1C1A1C;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+    animation: buttonAnimation 3s infinite; /* Animation for button */
+}
+
+.sparkle {
+    fill: #AAAAAA;
+    transition: all 800ms ease;
+}
+
+.text {
+    font-weight: 600;
+    color: #AAAAAA;
+    font-size: medium;
+}
+
+.btn:hover {
+    background: linear-gradient(0deg, #A47CF3, #683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+}
+
+.btn:hover .text {
+    color: white;
+}
+
+.btn:hover .sparkle {
+    fill: white;
+    transform: scale(1.2);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
