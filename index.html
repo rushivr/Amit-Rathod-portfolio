@@ -14,49 +14,238 @@
     <section id="home">
         <img src="profile.jpg" alt="Amit Rathod">
         <h1>Amit Rathod</h1>
-        <p>Electronics and Telecommunication Engineering Student</p>
+        <p>PROFESSIONAL SUMMARY
+Innovative and detail-oriented Electronics and Telecommunication Engineering student with a
+strong foundation in IoT, embedded systems, and power electronics. Passionate about cutting-edge
+technologies, particularly in Formula 1 Motorsports, electric vehicles, and digital twins. Experienced
+in software development, hardware integration, and AI applications.</p>
         <a href="#about" class="btn">
-            <span class="text">Learn More</span>
+            <span class="text">About Me</span>
             <svg class="sparkle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" />
             </svg>
         </a>
     </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <ul>
-            <li><strong>Email:</strong> 202302070008@mitaoe.ac.in</li>
-            <li><strong>Phone:</strong> 7263084413</li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/amit-rathod">www.linkedin.com/in/amit-rathod</a></li>
-            <li><strong>Location:</strong> Pune, India</li>
+<section id="education" style="padding: 50px; background: linear-gradient(135deg, #f3f3f3, #e2e2e2); border-radius: 15px; margin: 20px 0;">
+    <h2 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Education</h2>
+    <div style="max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif; color: #555;">
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin-bottom: 5px;">Jawaharlal Darda English Medium School, Yavatmal</h3>
+            <p>2011 - 2020 | <strong>60%</strong></p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h3 style="margin-bottom: 5px;">Government Polytechnic, Yavatmal</h3>
+            <p>Diploma in Electronics and Telecommunication | 2020 - 2023 | <strong>83.85%</strong></p>
+        </div>
+        <div>
+            <h3 style="margin-bottom: 5px;">MIT Academy Of Engineering</h3>
+            <p>B.Tech in Electronics and Telecommunication Engineering | Current SGPA: <strong>8.52</strong> | CGPA: <strong>7.3</strong></p>
+        </div>
+    </div>
+</section>
+<section id="technical-skills" style="padding: 50px; background: linear-gradient(135deg, #d3cce3, #e9e4f0); border-radius: 15px; margin: 20px 0;">
+    <h2 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Technical Skills</h2>
+    <div style="max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif; color: #555;">
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+                <strong>Programming:</strong> JAVA, C, Embedded C, MATLAB
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Embedded Systems:</strong> STM32, ESP32, Raspberry Pi, Arduino
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Software & Tools:</strong> MATLAB, Simulink, Keil, Blynk, Wokwi, Proteus
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Domains:</strong> IoT, Power Electronics, Digital Twin, AI & Generative AI
+            </li>
+            <li style="margin-bottom: 10px;">
+                <strong>Other Skills:</strong> PCB Design, Circuit Analysis, Data Analysis, Cloud Platforms
+            </li>
         </ul>
-        <p>Innovative and detail-oriented Electronics and Telecommunication Engineering student with a strong foundation in IoT, embedded systems, and power electronics. Passionate about cutting-edge technologies, particularly in Formula 1 Motorsports, electric vehicles, and digital twins.</p>
-    </section>
+    </div>
+</section>
+<section id="internships" style="padding: 50px; background: linear-gradient(135deg, #fdfbfb, #ebedee); border-radius: 15px; margin: 20px 0;">
+    <h2 style="text-align: center; font-family: Arial, sans-serif; color: #333; transition: color 0.3s ease;">Internships</h2>
+    <div style="max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif; color: #555;">
+        <div class="intern-card" style="margin-bottom: 20px; padding: 20px; border-radius: 10px; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+            <h3 style="color: #4b0082;">IoT Intern</h3>
+            <p><strong>AD Infocom Systems, Nagpur (Online)</strong> (Aug 2024 - Oct 2024)</p>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li>&#8226; Worked on IoT modules via Wokwi simulator for hands-on learning.</li>
+                <li>&#8226; Gained practical knowledge in IoT system design and application development.</li>
+            </ul>
+        </div>
+        <div class="intern-card" style="padding: 20px; border-radius: 10px; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+            <h3 style="color: #4b0082;">IoT Internship (Home Automation Project)</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li>&#8226; Implemented a home automation system using ESP32 and the Blynk app.</li>
+                <li>&#8226; Controlled LEDs and sensors remotely through a smartphone.</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>AlertEye: Real-time Cabin Surveillance</h3>
+<script>
+    window.addEventListener('scroll', function() {
+        document.querySelectorAll('.intern-card').forEach(function(card) {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                card.style.transform = 'scale(1.05)';
+                card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+            } else {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = 'none';
+            }
+        });
+    });
+
+    const heading = document.querySelector('h2');
+    heading.addEventListener('mouseover', function() {
+        heading.style.color = '#4b0082';
+        heading.style.textShadow = '0 0 10px #4b0082';
+    });
+    heading.addEventListener('mouseout', function() {
+        heading.style.color = '#333';
+        heading.style.textShadow = 'none';
+    });
+</script>
+
+  
+  <!-- Projects Section -->
+<section id="projects" style="padding: 50px; background: linear-gradient(135deg, #e0c3fc, #8ec5fc); border-radius: 15px; margin: 20px 0;">
+    <h2 style="text-align: center; font-family: Arial, sans-serif; color: #333; transition: color 0.3s ease;">Projects</h2>
+    <div style="max-width: 900px; margin: 0 auto; font-family: Arial, sans-serif; color: #333;">
+        <div class="project-card" style="margin-bottom: 20px; padding: 20px; border-radius: 10px; background: #fff; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+            <h3 style="color: #6a0dad;">AlertEye: Real-time Cabin Surveillance</h3>
             <p>Developed a surveillance system using a USB webcam and Raspberry Pi for real-time monitoring. Replaced motion sensors with real-time video feed for enhanced security.</p>
         </div>
-        <div class="project">
-            <h3>Closed-Loop Buck Converter with Digital Twin in EV Applications</h3>
+        <div class="project-card" style="margin-bottom: 20px; padding: 20px; border-radius: 10px; background: #fff; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+            <h3 style="color: #6a0dad;">Closed-Loop Buck Converter with Digital Twin in EV Applications</h3>
             <p>Designed and implemented a DC-DC buck converter (15V to 5V) with feedback control using STM32F407. Utilized IRF540NS MOSFET, TLP250 driver, and MBR10100M diode for efficiency. Integrated Digital Twin concept for real-time performance monitoring and predictive analysis.</p>
         </div>
-        <div class="project">
-            <h3>Surveillance Drone for Construction Sites or Agricultural Applications</h3>
+        <div class="project-card" style="padding: 20px; border-radius: 10px; background: #fff; transition: transform 0.4s ease, box-shadow 0.4s ease;">
+            <h3 style="color: #6a0dad;">Surveillance Drone for Construction Sites or Agricultural Applications</h3>
             <p>Uses a drone equipped with a camera and sensors to provide live surveillance. It can be integrated with IoT or AI for autonomous flight and data analysis.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>If you want to reach out, feel free to email me at <a href="mailto:202302070008@mitaoe.ac.in">202302070008@mitaoe.ac.in</a>.</p>
-    </section>
+<script>
+    window.addEventListener('scroll', function() {
+        document.querySelectorAll('.project-card').forEach(function(card) {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                card.style.transform = 'scale(1.05)';
+                card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
+            } else {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = 'none';
+            }
+        });
+    });
+
+    const headingProjects = document.querySelector('#projects h2');
+    headingProjects.addEventListener('mouseover', function() {
+        headingProjects.style.color = '#6a0dad';
+        headingProjects.style.textShadow = '0 0 10px #6a0dad';
+    });
+    headingProjects.addEventListener('mouseout', function() {
+        headingProjects.style.color = '#333';
+        headingProjects.style.textShadow = 'none';
+    });
+</script>
+
+    <!-- About Section -->
+<section id="about" style="padding: 50px; background: linear-gradient(135deg, #fbc2eb, #a6c1ee); border-radius: 15px; margin: 20px 0;">
+    <h2 style="text-align: center; font-family: Arial, sans-serif; color: #333; transition: color 0.3s ease;">About Me</h2>
+    <ul style="list-style: none; padding: 0; max-width: 600px; margin: 20px auto; font-family: Arial, sans-serif; color: #333;">
+        <li class="about-item" style="margin-bottom: 10px; opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
+            <strong>Email:</strong> 202302070008@mitaoe.ac.in
+        </li>
+        <li class="about-item" style="margin-bottom: 10px; opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
+            <strong>Phone:</strong> 7263084413
+        </li>
+        <li class="about-item" style="margin-bottom: 10px; opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/amit-rathod" style="color: #6a0dad; text-decoration: none; transition: color 0.3s ease;">www.linkedin.com/in/amit-rathod</a>
+        </li>
+        <li class="about-item" style="margin-bottom: 10px; opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
+            <strong>Location:</strong> Pune, India
+        </li>
+    </ul>
+    <p class="about-item" style="text-align: center; font-family: Arial, sans-serif; color: #333; opacity: 0; transform: translateY(30px); transition: all 0.6s ease;">
+        <strong>LANGUAGES:</strong> English ⦁ Hindi ⦁ Marathi
+    </p>
+</section>
+
+<script>
+    window.addEventListener('scroll', function() {
+        document.querySelectorAll('.about-item').forEach(function(item) {
+            const rect = item.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }
+        });
+    });
+
+    const headingAbout = document.querySelector('#about h2');
+    headingAbout.addEventListener('mouseover', function() {
+        headingAbout.style.color = '#6a0dad';
+        headingAbout.style.textShadow = '0 0 10px #6a0dad';
+    });
+    headingAbout.addEventListener('mouseout', function() {
+        headingAbout.style.color = '#333';
+        headingAbout.style.textShadow = 'none';
+    });
+
+    const linkedInLink = document.querySelector('#about a');
+    linkedInLink.addEventListener('mouseover', function() {
+        linkedInLink.style.color = '#ff4081';
+    });
+    linkedInLink.addEventListener('mouseout', function() {
+        linkedInLink.style.color = '#6a0dad';
+    });
+</script>
+
+
+  <!-- Contact Section -->
+<section id="contact" style="padding: 50px; background: linear-gradient(135deg, #fdfbfb, #ebedee); border-radius: 15px; margin: 20px 0; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333;">Contact Me</h2>
+    <p style="text-align: center; color: #555; margin-bottom: 20px;">Feel free to email me or send a message using the form below!</p>
+    <form style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" placeholder="Your Name" style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; transition: all 0.3s;">
+        <input type="email" placeholder="Your Email" style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; transition: all 0.3s;">
+        <textarea placeholder="Your Message" rows="5" style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; transition: all 0.3s;"></textarea>
+        <button type="submit" style="padding: 12px; border-radius: 8px; border: none; background: linear-gradient(90deg, #6a0dad, #8e2de2); color: white; font-weight: bold; cursor: pointer; transition: transform 0.3s, background 0.3s;">Send Message</button>
+    </form>
+</section>
+
+<script>
+    const inputs = document.querySelectorAll('#contact input, #contact textarea');
+    const button = document.querySelector('#contact button');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.style.boxShadow = '0 0 8px rgba(106, 13, 173, 0.5)';
+            input.style.transform = 'scale(1.02)';
+        });
+        input.addEventListener('blur', () => {
+            input.style.boxShadow = 'none';
+            input.style.transform = 'scale(1)';
+        });
+    });
+
+    button.addEventListener('mouseover', () => {
+        button.style.transform = 'scale(1.05)';
+        button.style.background = 'linear-gradient(90deg, #8e2de2, #4a00e0)';
+    });
+    button.addEventListener('mouseout', () => {
+        button.style.transform = 'scale(1)';
+        button.style.background = 'linear-gradient(90deg, #6a0dad, #8e2de2)';
+    });
+</script>
+
 
     <!-- Footer -->
     <footer>
