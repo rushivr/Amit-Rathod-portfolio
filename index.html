@@ -108,7 +108,7 @@
             z-index: -9;
         }
 
-	/* =========================================
+        /* =========================================
            DYNAMIC CSS BACKGROUND (Deep Blue/Cyan)
            ========================================= */
         .bg-elements {
@@ -221,62 +221,63 @@
         .card-body { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
 
         /* =========================================
-           NEW BUTTON STYLES (Uiverse.io by PriyanshuGupta28)
+           BUTTON STYLES (Uiverse.io by zjssun - Adapted)
            ========================================= */
-    /* From Uiverse.io by zjssun (Adapted for Portfolio Skill Tags) */ 
-.button {
-  position: relative;
-  border: none;
-  background: transparent;
-  --stroke-color: rgba(255, 255, 255, 0.5);
-  --ani-color: rgba(95, 3, 244, 0);
-  --color-gar: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  letter-spacing: 1px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--stroke-color);
-  cursor: pointer;
-  padding: 6px 12px;
-  display: inline-block;
-  user-select: none;
-}
+        .tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; align-items: center; }
 
-.front-text {
-  position: absolute;
-  top: 6px;
-  left: 12px;
-  width: 0%;
-  background: var(--color-gar);
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-size: 200%;
-  overflow: hidden;
-  transition: width 0.5s ease;
-  animation: 8s ani infinite linear;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-}
+        .button {
+          position: relative;
+          border: none;
+          background: transparent;
+          --stroke-color: rgba(255, 255, 255, 0.6);
+          --ani-color: #03a9f4;
+          --color-gar: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+          letter-spacing: 2px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          text-transform: uppercase;
+          color: transparent;
+          -webkit-text-stroke: 1px var(--stroke-color);
+          cursor: pointer;
+          padding: 6px 12px;
+          display: inline-block;
+          user-select: none;
+        }
 
-.button:hover .front-text {
-  width: calc(100% - 24px);
-  border-bottom: 2px solid #03a9f4;
-  -webkit-text-stroke: 1px var(--ani-color);
-}
+        .front-text {
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 6px 12px;
+          width: 0%;
+          height: 100%;
+          background: var(--color-gar);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-size: 200%;
+          overflow: hidden;
+          white-space: nowrap;
+          transition: width 0.4s ease-in-out;
+          animation: 8s ani infinite linear;
+          border-bottom: 2px solid transparent;
+          box-sizing: border-box;
+        }
 
-@keyframes ani {
-  0% {
-    background-position: 0%;
-  }
-  50% {
-    background-position: 200%;
-  }
-  100% {
-    background-position: 0%;
-  }
-}
+        .button:hover .front-text {
+          width: 100%;
+          border-bottom: 2px solid var(--ani-color);
+          -webkit-text-stroke: 1px transparent;
+        }
+
+        @keyframes ani {
+          0% { background-position: 0%; }
+          50% { background-position: 200%; }
+          100% { background-position: 0%; }
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
         /* =========================================
            RESPONSIVE DESIGN (Mobile & Tablet)
@@ -325,14 +326,14 @@
 
     <!-- DYNAMIC VIDEO BACKGROUND -->
     <video autoplay loop muted playsinline webkit-playsinline disablePictureInPicture id="bg-video">
-    <source src="background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     
     <!-- Dark overlay to ensure text is readable over the bright video -->
     <div class="video-overlay"></div>
 
-	<!-- MAIN PORTFOLIO -->
+    <!-- MAIN PORTFOLIO -->
     <div class="container">
         
         <!-- HEADER WITH PROFILE PHOTO -->
@@ -396,24 +397,37 @@
         <section class="scroll-anim">
             <h2>Experience & Internships</h2>
     
-			<div class="card">
-    <div class="card-header">
-        <div>
-            <div class="card-title">Graduate Apprentice Trainee (GAT)</div>
-            <div class="card-subtitle">Mahindra Defence Systems Limited | Naval Systems Division</div>
-        </div>
-        <div class="card-date">Mar 2026 - Mar 2027</div>
-    </div>
-    <div class="card-body">
-        Serving as a Graduate Apprentice Trainee within the Naval Systems Division, advancing hands-on expertise in power electronics engineering, high-reliability circuit design, and defense-grade hardware validation. Actively contributing to major naval technology programs, including the Integrated Anti-Submarine Warfare Defence Suite (IADS), while mastering power conversion architectures, signal conditioning, and underwater sensor electronics.
-    </div>
-    <div class="tags">
-        <button class="button">Power Electronics</button>
-        <button class="button">IADS Systems</button>
-        <button class="button">Naval Defense</button>
-        <button class="button">Hardware Validation</button>
-    </div>
-	</div>    
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Graduate Apprentice Trainee (GAT)</div>
+                        <div class="card-subtitle">Mahindra Defence Systems Limited | Naval Systems Division</div>
+                    </div>
+                    <div class="card-date">Mar 2026 - Mar 2027</div>
+                </div>
+                <div class="card-body">
+                    Serving as a Graduate Apprentice Trainee within the Naval Systems Division, advancing hands-on expertise in power electronics engineering, high-reliability circuit design, and defense-grade hardware validation. Actively contributing to major naval technology programs, including the Integrated Anti-Submarine Warfare Defence Suite (IADS), while mastering power conversion architectures, signal conditioning, and underwater sensor electronics.
+                </div>
+                <div class="tags">
+                    <button class="button">
+                        Power Electronics
+                        <span class="front-text">Power Electronics</span>
+                    </button>
+                    <button class="button">
+                        IADS Systems
+                        <span class="front-text">IADS Systems</span>
+                    </button>
+                    <button class="button">
+                        Naval Defense
+                        <span class="front-text">Naval Defense</span>
+                    </button>
+                    <button class="button">
+                        Hardware Validation
+                        <span class="front-text">Hardware Validation</span>
+                    </button>
+                </div>
+            </div>    
+            
             <div class="card">
                 <div class="card-header">
                     <div>
@@ -426,8 +440,14 @@
                     Worked on "Real-time Digital Twin of a power converter using MATLAB/Simulink". Conducted deep research, integrated new techniques, enhanced MATLAB proficiency, and gained vital industrial exposure.
                 </div>
                 <div class="tags">
-                    <button class="button">MATLAB Simulink</button>
-                    <button class="button">Power Electronics</button>
+                    <button class="button">
+                        MATLAB Simulink
+                        <span class="front-text">MATLAB Simulink</span>
+                    </button>
+                    <button class="button">
+                        Power Electronics
+                        <span class="front-text">Power Electronics</span>
+                    </button>
                 </div>
             </div>
 
@@ -443,9 +463,18 @@
                     Executed an 8-week hybrid internship. Independently developed and deployed a Home Automation project. Strengthened technical skills in IoT architecture and gained hands-on expertise designing smart solutions.
                 </div>
                 <div class="tags">
-                    <button class="button">Embedded Systems</button>
-                    <button class="button">Hardware</button>
-                    <button class="button">IoT Architecture</button>
+                    <button class="button">
+                        Embedded Systems
+                        <span class="front-text">Embedded Systems</span>
+                    </button>
+                    <button class="button">
+                        Hardware
+                        <span class="front-text">Hardware</span>
+                    </button>
+                    <button class="button">
+                        IoT Architecture
+                        <span class="front-text">IoT Architecture</span>
+                    </button>
                 </div>
             </div>
 
@@ -473,15 +502,24 @@
                         <div class="card-title">IOT Controlled Buck Converter</div>
                         <div class="card-subtitle">Mentor: Dr. A. D. Gundecha | Team of 4</div>
                     </div>
-                        <div class="card-date">Aug 2023 - Jul 2024</div>
+                    <div class="card-date">Aug 2023 - Jul 2024</div>
                 </div>
                 <div class="card-body">
                     Designed and built a Buck Converter to stably convert 15V to 5V. Handled hardware prototyping and system simulation. Successfully displayed real-time output voltage data directly on the Arduino IDE platform.
                 </div>
                 <div class="tags">
-                    <button class="button">Hardware Design</button>
-                    <button class="button">Arduino IDE</button>
-                    <button class="button">Power Systems</button>
+                    <button class="button">
+                        Hardware Design
+                        <span class="front-text">Hardware Design</span>
+                    </button>
+                    <button class="button">
+                        Arduino IDE
+                        <span class="front-text">Arduino IDE</span>
+                    </button>
+                    <button class="button">
+                        Power Systems
+                        <span class="front-text">Power Systems</span>
+                    </button>
                 </div>
             </div>
 
@@ -497,9 +535,18 @@
                     Engineered an F450 drone chassis from scratch, executing precision soldering for all flight components. Calibrated P.I. Gain settings for aerodynamic stability. Mastered manual flight controls and showcased the prototype at the DIPEX competition (NIT Nagpur & SIPNA).
                 </div>
                 <div class="tags">
-                    <button class="button">Drone Calibration</button>
-                    <button class="button">Flight Controller</button>
-                    <button class="button">Soldering</button>
+                    <button class="button">
+                        Drone Calibration
+                        <span class="front-text">Drone Calibration</span>
+                    </button>
+                    <button class="button">
+                        Flight Controller
+                        <span class="front-text">Flight Controller</span>
+                    </button>
+                    <button class="button">
+                        Soldering
+                        <span class="front-text">Soldering</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -516,7 +563,10 @@
                         <strong>Subject Expertise:</strong> VLSI Design (97/100). Extensive training and remote internship focusing on embedded systems logic.
                     </div>
                     <div class="tags">
-                        <button class="button">VLSI</button>
+                        <button class="button">
+                            VLSI
+                            <span class="front-text">VLSI</span>
+                        </button>
                     </div>
                 </div>
 
@@ -527,8 +577,14 @@
                         Mastered programmable logic controllers (PLCs) including ladder logic sequencing. Engineered HMIs in Wonderware InTouch to monitor industrial processes.
                     </div>
                     <div class="tags">
-                        <button class="button">PLC Ladder Logic</button>
-                        <button class="button">Wonderware HMI</button>
+                        <button class="button">
+                            PLC Ladder Logic
+                            <span class="front-text">PLC Ladder Logic</span>
+                        </button>
+                        <button class="button">
+                            Wonderware HMI
+                            <span class="front-text">Wonderware HMI</span>
+                        </button>
                     </div>
                 </div>
             </div>
