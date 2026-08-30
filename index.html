@@ -223,40 +223,45 @@
         /* =========================================
            NEW BUTTON STYLES (Uiverse.io by PriyanshuGupta28)
            ========================================= */
-       /* From Uiverse.io by zjssun */ 
+    /* From Uiverse.io by zjssun (Adapted for Portfolio Skill Tags) */ 
 .button {
   position: relative;
   border: none;
   background: transparent;
-  --stroke-color: #ffffff7c;
+  --stroke-color: rgba(255, 255, 255, 0.5);
   --ani-color: rgba(95, 3, 244, 0);
-  --color-gar: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
-  letter-spacing: 3px;
-  font-size: 2em;
-  font-family: "Arial";
+  --color-gar: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 1px var(--stroke-color);
   cursor: pointer;
+  padding: 6px 12px;
+  display: inline-block;
+  user-select: none;
 }
 
 .front-text {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 6px;
+  left: 12px;
   width: 0%;
   background: var(--color-gar);
   -webkit-background-clip: text;
   background-clip: text;
   background-size: 200%;
   overflow: hidden;
-  transition: all 1s;
-  animation: 8s ani infinite;
+  transition: width 0.5s ease;
+  animation: 8s ani infinite linear;
   border-bottom: 2px solid transparent;
+  white-space: nowrap;
 }
 
 .button:hover .front-text {
-  width: 100%;
+  width: calc(100% - 24px);
   border-bottom: 2px solid #03a9f4;
   -webkit-text-stroke: 1px var(--ani-color);
 }
@@ -265,16 +270,13 @@
   0% {
     background-position: 0%;
   }
-
   50% {
-    background-position: 400%;
+    background-position: 200%;
   }
-
   100% {
     background-position: 0%;
   }
 }
-
 
         /* =========================================
            RESPONSIVE DESIGN (Mobile & Tablet)
