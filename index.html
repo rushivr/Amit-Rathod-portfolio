@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-      /* =========================================
+  /* =========================================
    TERMINAL LOADING SCREEN & ANIMATIONS
    ========================================= */
 #loader-screen {
@@ -49,24 +49,25 @@
 }
 
 @keyframes blinkCursor {
-    50% { border-right-color: transparent; }
+    0%, 100% { border-color: #0f0; }
+    50% { border-color: transparent; }
 }
 
 @keyframes typeAndDelete {
-    0%, 10% { width: 0; }
-    45%, 55% { width: 6.2em; } /* Width tuned for "Loading..." */
-    90%, 100% { width: 0; }
+    0% { width: 0ch; }
+    70%, 85% { width: 10ch; } /* Fits "Loading..." (10 characters) */
+    100% { width: 0ch; }
 }
 
 .terminal-loader {
-    border: 0.1em solid #333;
+    border: 1px solid #333;
     background-color: #1a1a1a;
     color: #0f0;
     font-family: "Courier New", Courier, monospace;
-    font-size: 1.2em;
-    padding: 1.5em 1em;
-    width: 13em;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    font-size: 1.1em;
+    padding: 2.2em 1.2em 1em;
+    width: 13.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
     position: relative;
     overflow: hidden;
@@ -80,8 +81,8 @@
     right: 0;
     height: 1.8em;
     background-color: #2a2a2a;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     padding: 0 0.6em;
     box-sizing: border-box;
     display: flex;
@@ -92,7 +93,8 @@
 .terminal-title {
     line-height: 1.8em;
     color: #eee;
-    font-size: 0.85em;
+    font-size: 0.8em;
+    font-family: "Courier New", Courier, monospace;
 }
 
 .terminal-controls {
@@ -106,7 +108,6 @@
     height: 0.6em;
     margin-left: 0.4em;
     border-radius: 50%;
-    background-color: #777;
 }
 
 .control.close { background-color: #e33; }
@@ -117,11 +118,13 @@
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 0.2em solid #0f0; /* Green Cursor */
+    color: #0f0 !important;
+    -webkit-text-fill-color: #0f0 !important;
+    font-family: "Courier New", Courier, monospace;
+    border-right: 3px solid #0f0; /* Green Cursor */
     animation:
-        typeAndDelete 3.5s steps(10) infinite,
-        blinkCursor 0.5s step-end infinite alternate;
-    margin-top: 1.2em;
+        typeAndDelete 1.4s steps(10) infinite,
+        blinkCursor 0.5s infinite;
     font-weight: 600;
 }
         /* =========================================
