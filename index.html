@@ -227,14 +227,14 @@
         }
 
         /* =========================================
-           RECTANGULAR WIDE SOCIAL CARD
+           FIXED SOCIAL CARD & STACKED ICONS
            ========================================= */
         .social-card {
           position: relative;
-          width: 240px;            /* Rectangular width */
-          height: 140px;           /* Height preserved */
+          width: 170px;
+          height: 170px;
           background: lightgrey;
-          border-radius: 28px;
+          border-radius: 32px;
           overflow: hidden;
           box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
           transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -250,10 +250,10 @@
 
         .social-card .logo {
           position: absolute;
-          right: 24px;
-          top: 18px;
+          right: 20px;
+          top: 20px;
           transition: all 0.6s ease-in-out;
-          font-size: 1.15em;
+          font-size: 1.1em;
           font-weight: 700;
           color: #ffffff;
           letter-spacing: 1px;
@@ -262,13 +262,13 @@
 
         .social-card .icon {
           position: absolute;
-          top: 10px;
+          top: 12px;
           right: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 20px;
-          height: 20px;
+          width: 22px;
+          height: 22px;
         }
 
         .social-card .icon .svg {
@@ -306,12 +306,12 @@
           filter: drop-shadow(0 0 5px white);
         }
 
-        /* Rectangular Box Adjustments */
+        /* Box 1: LinkedIn (Highest level icon) */
         .social-card .box1 {
-          width: 82%;
-          height: 82%;
-          bottom: -82%;
-          left: -82%;
+          width: 78%;
+          height: 78%;
+          bottom: -78%;
+          left: -78%;
         }
 
         .social-card .box1::before {
@@ -322,11 +322,12 @@
           opacity: 1;
         }
 
+        /* Box 2: Gmail (Middle level icon) */
         .social-card .box2 {
-          width: 58%;
-          height: 58%;
-          bottom: -58%;
-          left: -58%;
+          width: 56%;
+          height: 56%;
+          bottom: -56%;
+          left: -56%;
           transition-delay: 0.1s;
         }
 
@@ -338,11 +339,12 @@
           opacity: 1;
         }
 
+        /* Box 3: GitHub (Lowest level icon) */
         .social-card .box3 {
-          width: 36%;
-          height: 36%;
-          bottom: -36%;
-          left: -36%;
+          width: 34%;
+          height: 34%;
+          bottom: -34%;
+          left: -34%;
           transition-delay: 0.2s;
         }
 
@@ -355,7 +357,7 @@
         }
 
         .social-card:hover {
-          transform: scale(1.03);
+          transform: scale(1.05);
         }
 
         .social-card:hover .box {
@@ -606,7 +608,7 @@
                         <span>📍 Pune, MH, India</span>
                     </div>
 
-                    <!-- RECTANGULAR SOCIAL MEDIA CARD -->
+                    <!-- INTERACTIVE SOCIAL MEDIA CARD -->
                     <div class="social-card">
                         <div class="background"></div>
                         <div class="logo">Socials</div>
