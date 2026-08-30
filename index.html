@@ -31,97 +31,114 @@
             overflow-x: hidden;
         }
 
- /* From Uiverse.io by jeremyssocial */ 
-@keyframes blinkCursor {
-  50% {
-    border-right-color: transparent;
-  }
-}
+        /* =========================================
+           TERMINAL LOADING SCREEN & ANIMATION
+           (From Uiverse.io by jeremyssocial)
+           ========================================= */
+        #loader-screen {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: 9999; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: #020813; 
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
 
-@keyframes typeAndDelete {
-  0%,
-  10% {
-    width: 0;
-  }
-  45%,
-  55% {
-    width: 6.2em;
-  } /* adjust width based on content */
-  90%,
-  100% {
-    width: 0;
-  }
-}
+        @keyframes blinkCursor {
+          50% {
+            border-right-color: transparent;
+          }
+        }
 
-.terminal-loader {
-  border: 0.1em solid #333;
-  background-color: #1a1a1a;
-  color: #0f0;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1em;
-  padding: 1.5em 1em;
-  width: 12em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
-}
+        @keyframes typeAndDelete {
+          0%,
+          10% {
+            width: 0;
+          }
+          45%,
+          55% {
+            width: 6.2em;
+          } /* adjust width based on content */
+          90%,
+          100% {
+            width: 0;
+          }
+        }
 
-.terminal-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1.5em;
-  background-color: #333;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  padding: 0 0.4em;
-  box-sizing: border-box;
-}
+        .terminal-loader {
+          border: 0.1em solid #333;
+          background-color: #1a1a1a;
+          color: #0f0;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 1em;
+          padding: 1.5em 1em;
+          width: 12em;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+          position: relative;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
 
-.terminal-controls {
-  float: right;
-}
+        .terminal-header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1.5em;
+          background-color: #333;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+          padding: 0 0.4em;
+          box-sizing: border-box;
+        }
 
-.control {
-  display: inline-block;
-  width: 0.6em;
-  height: 0.6em;
-  margin-left: 0.4em;
-  border-radius: 50%;
-  background-color: #777;
-}
+        .terminal-controls {
+          float: right;
+        }
 
-.control.close {
-  background-color: #e33;
-}
+        .control {
+          display: inline-block;
+          width: 0.6em;
+          height: 0.6em;
+          margin-left: 0.4em;
+          border-radius: 50%;
+          background-color: #777;
+        }
 
-.control.minimize {
-  background-color: #ee0;
-}
+        .control.close {
+          background-color: #e33;
+        }
 
-.control.maximize {
-  background-color: #0b0;
-}
+        .control.minimize {
+          background-color: #ee0;
+        }
 
-.terminal-title {
-  float: left;
-  line-height: 1.5em;
-  color: #eee;
-}
+        .control.maximize {
+          background-color: #0b0;
+        }
 
-.text {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.2em solid green; /* Cursor */
-  animation:
-    typeAndDelete 4s steps(11) infinite,
-    blinkCursor 0.5s step-end infinite alternate;
-  margin-top: 1.5em;
-}
+        .terminal-title {
+          float: left;
+          line-height: 1.5em;
+          color: #eee;
+        }
+
+        .text {
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: 0.2em solid green; /* Cursor */
+          animation:
+            typeAndDelete 4s steps(11) infinite,
+            blinkCursor 0.5s step-end infinite alternate;
+          margin-top: 1.5em;
+        }
 
         /* =========================================
            VIDEO BACKGROUND STYLES
@@ -174,7 +191,6 @@
             max-width: 1050px; margin: 0 auto; padding: 0 20px 80px; position: relative; z-index: 10; 
         }
 
-        /* Header Flexbox Layout */
         header { 
             display: flex; align-items: center; justify-content: space-between; 
             padding: 120px 20px 60px; gap: 40px; text-align: left;
@@ -198,7 +214,6 @@
         }
         .contact-info span { color: #fff; display: flex; align-items: center; gap: 8px; }
 
-        /* Profile Photo Blob Effect */
         .header-image-container {
             position: relative; width: 280px; height: 280px; flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
@@ -206,7 +221,7 @@
         
         .blob-bg {
             position: absolute; width: 100%; height: 100%;
-            background: #00a8ff; /* Cyan glow */
+            background: #00a8ff;
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
             z-index: 0; box-shadow: 0 0 50px rgba(0, 168, 255, 0.5);
             animation: morph 6s ease-in-out infinite;
@@ -261,139 +276,140 @@
 
         .card-body { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
 
-       /* =========================================
-   REFINED SUBTLE BUTTON STYLES (Soft Glow)
-   ========================================= */
-.tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; align-items: center; }
+        /* =========================================
+           REFINED SUBTLE BUTTON STYLES (Soft Glow)
+           ========================================= */
+        .tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; align-items: center; }
 
-.button-container {
-    position: relative;
-    display: inline-block;
-}
+        .button-container {
+            position: relative;
+            display: inline-block;
+        }
 
-.button-border {
-    padding: 1.5px;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 14px;
-}
+        .button-border {
+            padding: 1.5px;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+        }
 
-.button {
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 12px;
-    width: max-content;
-    height: 38px;
-    padding: 0 16px;
-    background: #091122;
-    display: flex;
-    flex-direction: column;
-    color: #ffffff;
-    overflow: hidden;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    position: relative;
-}
+        .button {
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 12px;
+            width: max-content;
+            height: 38px;
+            padding: 0 16px;
+            background: #091122;
+            display: flex;
+            flex-direction: column;
+            color: #ffffff;
+            overflow: hidden;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
 
-.real-button {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    outline: none;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    opacity: 0;
-}
+        .real-button {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            outline: none;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            opacity: 0;
+        }
 
-.backdrop {
-    position: absolute;
-    inset: -9900%;
-    background: radial-gradient(
-        circle at 50% 50%,
-        #0000 0,
-        #0000 20%,
-        #0b1222aa 50%
-    );
-    background-size: 3px 3px;
-    z-index: -1;
-}
+        .backdrop {
+            position: absolute;
+            inset: -9900%;
+            background: radial-gradient(
+                circle at 50% 50%,
+                #0000 0,
+                #0000 20%,
+                #0b1222aa 50%
+            );
+            background-size: 3px 3px;
+            z-index: -1;
+        }
 
-.spin {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    opacity: 0.2; /* Subtler default opacity */
-    overflow: hidden;
-    transition: opacity 0.4s ease;
-}
+        .spin {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            opacity: 0.2;
+            overflow: hidden;
+            transition: opacity 0.4s ease;
+        }
 
-.real-button:active ~ div .spin {
-    opacity: 0.7;
-}
+        .real-button:active ~ div .spin {
+            opacity: 0.7;
+        }
 
-.spin-blur {
-    filter: blur(0.6em) url(#unopaq); /* Reduced spillage out of bounds */
-}
+        .spin-blur {
+            filter: blur(0.6em) url(#unopaq);
+        }
 
-.spin-intense {
-    inset: -0.1em;
-    filter: blur(0.15em) url(#unopaq2);
-    border-radius: 0.75em;
-}
+        .spin-intense {
+            inset: -0.1em;
+            filter: blur(0.15em) url(#unopaq2);
+            border-radius: 0.75em;
+        }
 
-.spin-inside {
-    inset: -1px;
-    border-radius: inherit;
-    filter: blur(1px) url(#unopaq3);
-    z-index: 0;
-}
+        .spin-inside {
+            inset: -1px;
+            border-radius: inherit;
+            filter: blur(1px) url(#unopaq3);
+            z-index: 0;
+        }
 
-.spin::before {
-    content: "";
-    position: absolute;
-    inset: -150%;
-    animation:
-        speen 8s cubic-bezier(0.56, 0.15, 0.28, 0.86) infinite,
-        woah 4s infinite;
-    animation-play-state: paused;
-}
+        .spin::before {
+            content: "";
+            position: absolute;
+            inset: -150%;
+            animation:
+                speen 8s cubic-bezier(0.56, 0.15, 0.28, 0.86) infinite,
+                woah 4s infinite;
+            animation-play-state: paused;
+        }
 
-.real-button:hover ~ .button-border .spin::before {
-    animation-play-state: running;
-}
+        .real-button:hover ~ .button-border .spin::before {
+            animation-play-state: running;
+        }
 
-.real-button:hover ~ .button-border .spin {
-    opacity: 0.55; /* Soft hover highlight instead of intense flare */
-}
+        .real-button:hover ~ .button-border .spin {
+            opacity: 0.55;
+        }
 
-/* Smoother, theme-matching gradient transitions */
-.spin-blur::before {
-    background: linear-gradient(90deg, rgba(0, 168, 255, 0.4) 30%, transparent 50%, rgba(139, 92, 246, 0.4) 70%);
-}
+        .spin-blur::before {
+            background: linear-gradient(90deg, rgba(0, 168, 255, 0.4) 30%, transparent 50%, rgba(139, 92, 246, 0.4) 70%);
+        }
 
-.spin-intense::before {
-    background: linear-gradient(90deg, rgba(0, 200, 255, 0.5) 20%, transparent 45% 55%, rgba(168, 85, 247, 0.5) 80%);
-}
+        .spin-intense::before {
+            background: linear-gradient(90deg, rgba(0, 200, 255, 0.5) 20%, transparent 45% 55%, rgba(168, 85, 247, 0.5) 80%);
+        }
 
-.spin-inside::before {
-    background: linear-gradient(90deg, rgba(56, 189, 248, 0.6) 30%, transparent 45% 55%, rgba(192, 132, 252, 0.6) 70%);
-}
+        .spin-inside::before {
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.6) 30%, transparent 45% 55%, rgba(192, 132, 252, 0.6) 70%);
+        }
 
-@keyframes speen {
-    0% { transform: rotate(10deg); }
-    50% { transform: rotate(190deg); }
-    100% { transform: rotate(370deg); }
-}
+        @keyframes speen {
+            0% { transform: rotate(10deg); }
+            50% { transform: rotate(190deg); }
+            100% { transform: rotate(370deg); }
+        }
 
-@keyframes woah {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(0.85); }
-}
+        @keyframes woah {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.85); }
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
         /* =========================================
            RESPONSIVE DESIGN (Mobile & Tablet)
@@ -405,7 +421,6 @@
             .grid-2 { grid-template-columns: 1fr; }
             .card-header { flex-direction: column; gap: 8px; } 
             .card { padding: 24px; } 
-            .loader-wrapper { scale: 1.5; }
         }
 
         @media (max-width: 480px) {
@@ -417,20 +432,24 @@
             .card-title { font-size: 1.15rem; } .card-subtitle { font-size: 0.9rem; }
             .contact-info { flex-direction: column; border-radius: 20px; padding: 15px; gap: 12px; width: 100%; }
             .contact-info span { justify-content: center; text-align: center; }
-            .loader-wrapper { scale: 1.1; margin: 0; }
             .tags { justify-content: center; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- LOADING SCREEN -->
+    <!-- TERMINAL LOADING SCREEN -->
     <div id="loader-screen">
-        <div class="loader-wrapper">
-            <div class="loader"></div>
-            <span class="loader-letter">L</span><span class="loader-letter">O</span><span class="loader-letter">A</span>
-            <span class="loader-letter">D</span><span class="loader-letter">I</span><span class="loader-letter">N</span>
-            <span class="loader-letter">G</span><span class="loader-letter">.</span><span class="loader-letter">.</span><span class="loader-letter">.</span>
+        <div class="terminal-loader">
+            <div class="terminal-header">
+                <div class="terminal-title">Status</div>
+                <div class="terminal-controls">
+                    <div class="control close"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
+                </div>
+            </div>
+            <div class="text">Loading...</div>
         </div>
     </div>
 
@@ -902,7 +921,7 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 500);
-            }, 1500); 
+            }, 2500); 
         });
 
         // Smooth reveal animation on scroll
