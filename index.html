@@ -33,7 +33,6 @@
 
         /* =========================================
            TERMINAL LOADING SCREEN & ANIMATION
-           (From Uiverse.io by jeremyssocial)
            ========================================= */
         #loader-screen {
             position: fixed; 
@@ -228,164 +227,172 @@
         }
 
         /* =========================================
-           SOCIAL CARD (From Uiverse.io by Smit-Prajapati)
-           Inline Header Placement & Adjusted Scale
+           NEW SOCIAL CARD (From Uiverse.io by vinodjangid07)
+           Scoped to .social-card to prevent layout conflicts
            ========================================= */
         .social-card {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            background: rgba(15, 20, 30, 0.35);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+          position: relative;
+          width: 160px;
+          height: 160px;
+          background: lightgrey;
+          border-radius: 30px;
+          overflow: hidden;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
+          transition: all 1s ease-in-out;
+          border: 2px solid rgb(255, 255, 255);
         }
 
-        .social-background {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 100% 107%, #00a8ff 0%, #8b5cf6 50%, #020813 100%);
-            opacity: 0.6;
+        .social-card .background {
+          position: absolute;
+          inset: 0;
+          background-color: #4158D0;
+          background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
         }
 
-        .social-logo {
-            position: absolute;
-            right: 50%;
-            bottom: 50%;
-            transform: translate(50%, 50%);
-            transition: all 0.6s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
+        .social-card .logo {
+          position: absolute;
+          right: 50%;
+          bottom: 50%;
+          transform: translate(50%, 50%);
+          transition: all 0.6s ease-in-out;
+          font-size: 1.1em;
+          font-weight: 600;
+          color: #ffffff;
+          letter-spacing: 3px;
         }
 
-        .social-logo .logo-svg {
-            fill: white;
-            width: 28px;
-            height: 28px;
+        .social-card .logo .logo-svg {
+          fill: white;
+          width: 30px;
+          height: 30px;
         }
 
         .social-card .icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 20px;
-            height: 20px;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
         }
 
         .social-card .icon .svg {
-            fill: rgba(255, 255, 255, 0.85);
-            width: 100%;
-            height: 100%;
-            transition: all 0.5s ease-in-out;
+          fill: rgba(255, 255, 255, 0.797);
+          width: 100%;
+          height: 100%;
+          transition: all 0.5s ease-in-out;
         }
 
-        .social-box {
-            position: absolute;
-            padding: 8px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1.5px solid rgba(255, 255, 255, 0.8);
-            border-right: 1.5px solid rgba(255, 255, 255, 0.8);
-            border-radius: 10% 13% 42% 0% / 10% 12% 75% 0%;
-            box-shadow: -7px 7px 20px rgba(0, 0, 0, 0.3);
-            transform-origin: bottom left;
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            text-decoration: none;
-            z-index: 3;
+        .social-card .box {
+          position: absolute;
+          padding: 10px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          background: rgba(255, 255, 255, 0.389);
+          border-top: 2px solid rgb(255, 255, 255);
+          border-right: 1px solid white;
+          border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
+          box-shadow: rgba(100, 100, 111, 0.364) -7px 7px 29px 0px;
+          transform-origin: bottom left;
+          transition: all 1s ease-in-out;
+          text-decoration: none;
+          z-index: 3;
         }
 
-        .social-box::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
-            z-index: -1;
+        .social-card .box::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          opacity: 0;
+          transition: all 0.5s ease-in-out;
+          z-index: -1;
         }
 
-        .social-box:hover .svg {
-            fill: white;
-            filter: drop-shadow(0 0 6px white);
+        .social-card .box:hover .svg {
+          fill: white;
         }
 
-        /* Box 1: LinkedIn (70% size) */
-        .social-box1 {
-            width: 70%;
-            height: 70%;
-            bottom: -70%;
-            left: -70%;
+        .social-card .box1 {
+          width: 70%;
+          height: 70%;
+          bottom: -70%;
+          left: -70%;
         }
 
-        .social-box1::before {
-            background: radial-gradient(circle at 30% 107%, #00a0dc 0%, #0077b5 90%);
+        .social-card .box1::before {
+          background: radial-gradient(circle at 30% 107%, #00a0dc 0%, #0077b5 90%);
         }
 
-        .social-box1:hover::before {
-            opacity: 1;
+        .social-card .box1:hover::before {
+          opacity: 1;
         }
 
-        /* Box 2: Gmail (48% size) */
-        .social-box2 {
-            width: 48%;
-            height: 48%;
-            bottom: -48%;
-            left: -48%;
-            transition-delay: 0.15s;
+        .social-card .box1:hover .icon .svg {
+          filter: drop-shadow(0 0 5px white);
         }
 
-        .social-box2::before {
-            background: radial-gradient(circle at 30% 107%, #ff6b6b 0%, #ea4335 90%);
+        .social-card .box2 {
+          width: 50%;
+          height: 50%;
+          bottom: -50%;
+          left: -50%;
+          transition-delay: 0.2s;
         }
 
-        .social-box2:hover::before {
-            opacity: 1;
+        .social-card .box2::before {
+          background: radial-gradient(circle at 30% 107%, #ff6b6b 0%, #ea4335 90%);
         }
 
-        /* Box 3: GitHub (28% size) */
-        .social-box3 {
-            width: 28%;
-            height: 28%;
-            bottom: -28%;
-            left: -28%;
-            transition-delay: 0.3s;
+        .social-card .box2:hover::before {
+          opacity: 1;
         }
 
-        .social-box3::before {
-            background: radial-gradient(circle at 30% 107%, #4f4f4f 0%, #181717 90%);
+        .social-card .box2:hover .icon .svg {
+          filter: drop-shadow(0 0 5px white);
         }
 
-        .social-box3:hover::before {
-            opacity: 1;
+        .social-card .box3 {
+          width: 30%;
+          height: 30%;
+          bottom: -30%;
+          left: -30%;
+          transition-delay: 0.4s;
+        }
+
+        .social-card .box3::before {
+          background: radial-gradient(circle at 30% 107%, #4f4f4f 0%, #181717 90%);
+        }
+
+        .social-card .box3:hover::before {
+          opacity: 1;
+        }
+
+        .social-card .box3:hover .icon .svg {
+          filter: drop-shadow(0 0 5px white);
+        }
+
+        .social-card .box4 {
+          width: 10%;
+          height: 10%;
+          bottom: -10%;
+          left: -10%;
+          transition-delay: 0.6s;
         }
 
         .social-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 168, 255, 0.3);
+          transform: scale(1.05);
         }
 
-        .social-card:hover .social-box {
-            bottom: -1px;
-            left: -1px;
+        .social-card:hover .box {
+          bottom: -1px;
+          left: -1px;
         }
 
-        .social-card:hover .social-logo {
-            transform: translate(0, 0);
-            bottom: 12px;
-            right: 12px;
+        .social-card:hover .logo {
+          transform: translate(50px, -40px);
+          letter-spacing: 0px;
         }
 
-        /* --- Sections & Cards --- */
+        /* --- Sections & Portfolio Cards --- */
         section {
             margin-top: 50px; opacity: 0; transform: translateY(40px);
             transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
@@ -628,18 +635,17 @@
                         <span>📍 Pune, MH, India</span>
                     </div>
 
-                    <!-- INTERACTIVE SOCIAL MEDIA CARD -->
+                    <!-- NEW INTERACTIVE SOCIAL MEDIA CARD -->
                     <div class="social-card">
-                        <div class="social-background"></div>
-                        <div class="social-logo">
-                            <!-- Main Share/Connect Icon -->
+                        <div class="background"></div>
+                        <div class="logo">
                             <svg class="logo-svg" viewBox="0 0 24 24">
                                 <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3a3 3 0 0 0-3-3a3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z"/>
                             </svg>
                         </div>
 
                         <!-- Box 1: LinkedIn -->
-                        <a href="https://linkedin.com" target="_blank" class="social-box social-box1" title="LinkedIn">
+                        <a href="https://linkedin.com" target="_blank" class="box box1" title="LinkedIn">
                             <span class="icon">
                                 <svg class="svg" viewBox="0 0 24 24">
                                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
@@ -648,7 +654,7 @@
                         </a>
 
                         <!-- Box 2: Gmail -->
-                        <a href="mailto:rushivrathor2@gmail.com" class="social-box social-box2" title="Gmail">
+                        <a href="mailto:rushivrathor2@gmail.com" class="box box2" title="Gmail">
                             <span class="icon">
                                 <svg class="svg" viewBox="0 0 24 24">
                                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5l-8-5V6l8 5l8-5v2z"/>
@@ -657,13 +663,16 @@
                         </a>
 
                         <!-- Box 3: GitHub -->
-                        <a href="https://github.com/rushivr" target="_blank" class="social-box social-box3" title="GitHub">
+                        <a href="https://github.com/rushivr" target="_blank" class="box box3" title="GitHub">
                             <span class="icon">
                                 <svg class="svg" viewBox="0 0 24 24">
                                     <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.1-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
                                 </svg>
                             </span>
                         </a>
+
+                        <!-- Box 4: Extra Accent Box -->
+                        <div class="box box4"></div>
                     </div>
                 </div>
             </div>
@@ -716,7 +725,7 @@
         <!-- EXPERIENCE & INTERNSHIPS -->
         <section class="scroll-anim">
             <h2>Experience & Internships</h2>
-    
+        
             <div class="card">
                 <div class="card-header">
                     <div>
