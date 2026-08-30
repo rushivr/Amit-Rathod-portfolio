@@ -221,60 +221,136 @@
         .card-body { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
 
         /* =========================================
-           BUTTON STYLES (Uiverse.io by zjssun - Adapted)
+           NEW BUTTON STYLES (From Uiverse.io by SelfMadeSystem - Adapted for Tags)
            ========================================= */
         .tags { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; align-items: center; }
 
+        .button-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .button-border {
+            padding: 2px;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+        }
+
         .button {
-          position: relative;
-          border: none;
-          background: transparent;
-          --stroke-color: rgba(255, 255, 255, 0.6);
-          --ani-color: #03a9f4;
-          --color-gar: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-          letter-spacing: 2px;
-          font-size: 0.85rem;
-          font-weight: 700;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          text-transform: uppercase;
-          color: transparent;
-          -webkit-text-stroke: 1px var(--stroke-color);
-          cursor: pointer;
-          padding: 6px 12px;
-          display: inline-block;
-          user-select: none;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 12px;
+            width: max-content;
+            height: 38px;
+            padding: 0 16px;
+            background: #0a1122;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow: hidden;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
         }
 
-        .front-text {
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding: 6px 12px;
-          width: 0%;
-          height: 100%;
-          background: var(--color-gar);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-size: 200%;
-          overflow: hidden;
-          white-space: nowrap;
-          transition: width 0.4s ease-in-out;
-          animation: 8s ani infinite linear;
-          border-bottom: 2px solid transparent;
-          box-sizing: border-box;
+        .real-button {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            outline: none;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            opacity: 0;
         }
 
-        .button:hover .front-text {
-          width: 100%;
-          border-bottom: 2px solid var(--ani-color);
-          -webkit-text-stroke: 1px transparent;
+        .backdrop {
+            position: absolute;
+            inset: -9900%;
+            background: radial-gradient(
+                circle at 50% 50%,
+                #0000 0,
+                #0000 20%,
+                #111111aa 50%
+            );
+            background-size: 3px 3px;
+            z-index: -1;
         }
 
-        @keyframes ani {
-          0% { background-position: 0%; }
-          50% { background-position: 200%; }
-          100% { background-position: 0%; }
+        .spin {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            opacity: 0.4;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .real-button:active ~ div .spin {
+            opacity: 1;
+        }
+
+        .spin-blur {
+            filter: blur(1.5em) url(#unopaq);
+        }
+
+        .spin-intense {
+            inset: -0.125em;
+            filter: blur(0.2em) url(#unopaq2);
+            border-radius: 0.75em;
+        }
+
+        .spin-inside {
+            inset: -2px;
+            border-radius: inherit;
+            filter: blur(2px) url(#unopaq3);
+            z-index: 0;
+        }
+
+        .spin::before {
+            content: "";
+            position: absolute;
+            inset: -150%;
+            animation:
+                speen 8s cubic-bezier(0.56, 0.15, 0.28, 0.86) infinite,
+                woah 4s infinite;
+            animation-play-state: paused;
+        }
+
+        .real-button:hover ~ .button-border .spin::before {
+            animation-play-state: running;
+        }
+
+        .real-button:hover ~ .button-border .spin {
+            opacity: 0.95;
+        }
+
+        .spin-blur::before {
+            background: linear-gradient(90deg, #f50 30%, #0000 50%, #05f 70%);
+        }
+
+        .spin-intense::before {
+            background: linear-gradient(90deg, #f95 20%, #0000 45% 55%, #59f 80%);
+        }
+
+        .spin-inside::before {
+            background: linear-gradient(90deg, #fc9 30%, #0000 45% 55%, #9cf 70%);
+        }
+
+        @keyframes speen {
+            0% { transform: rotate(10deg); }
+            50% { transform: rotate(190deg); }
+            100% { transform: rotate(370deg); }
+        }
+
+        @keyframes woah {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.75); }
         }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -296,13 +372,13 @@
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.5rem; margin-left: 0; text-align: center; }
             .subtitle { font-size: 1.05rem; }
-            .header-image-container { width: 220px; height: 220px; } /* Smaller photo on phones */
+            .header-image-container { width: 220px; height: 220px; }
             .card { padding: 20px; border-radius: 20px; }
             .card-title { font-size: 1.15rem; } .card-subtitle { font-size: 0.9rem; }
             .contact-info { flex-direction: column; border-radius: 20px; padding: 15px; gap: 12px; width: 100%; }
             .contact-info span { justify-content: center; text-align: center; }
             .loader-wrapper { scale: 1.1; margin: 0; }
-            .tags { justify-content: center; gap: 15px; } /* Extra gap for mobile buttons */
+            .tags { justify-content: center; gap: 12px; }
         }
     </style>
 </head>
@@ -349,7 +425,6 @@
             </div>
             <div class="header-image-container">
                 <div class="blob-bg"></div>
-                <!-- MAKE SURE YOUR IMAGE IS NAMED profile.jpg AND IS IN THE SAME FOLDER -->
                 <img src="profile.jpg" alt="Amit Rathod Profile Picture">
             </div>
         </header>
@@ -409,22 +484,57 @@
                     Serving as a Graduate Apprentice Trainee within the Naval Systems Division, advancing hands-on expertise in power electronics engineering, high-reliability circuit design, and defense-grade hardware validation. Actively contributing to major naval technology programs, including the Integrated Anti-Submarine Warfare Defence Suite (IADS), while mastering power conversion architectures, signal conditioning, and underwater sensor electronics.
                 </div>
                 <div class="tags">
-                    <button class="button">
-                        Power Electronics
-                        <span class="front-text">Power Electronics</span>
-                    </button>
-                    <button class="button">
-                        IADS Systems
-                        <span class="front-text">IADS Systems</span>
-                    </button>
-                    <button class="button">
-                        Naval Defense
-                        <span class="front-text">Naval Defense</span>
-                    </button>
-                    <button class="button">
-                        Hardware Validation
-                        <span class="front-text">Hardware Validation</span>
-                    </button>
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Power Electronics
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                IADS Systems
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Naval Defense
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Hardware Validation
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>    
             
@@ -440,14 +550,31 @@
                     Worked on "Real-time Digital Twin of a power converter using MATLAB/Simulink". Conducted deep research, integrated new techniques, enhanced MATLAB proficiency, and gained vital industrial exposure.
                 </div>
                 <div class="tags">
-                    <button class="button">
-                        MATLAB Simulink
-                        <span class="front-text">MATLAB Simulink</span>
-                    </button>
-                    <button class="button">
-                        Power Electronics
-                        <span class="front-text">Power Electronics</span>
-                    </button>
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                MATLAB Simulink
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Power Electronics
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -463,18 +590,44 @@
                     Executed an 8-week hybrid internship. Independently developed and deployed a Home Automation project. Strengthened technical skills in IoT architecture and gained hands-on expertise designing smart solutions.
                 </div>
                 <div class="tags">
-                    <button class="button">
-                        Embedded Systems
-                        <span class="front-text">Embedded Systems</span>
-                    </button>
-                    <button class="button">
-                        Hardware
-                        <span class="front-text">Hardware</span>
-                    </button>
-                    <button class="button">
-                        IoT Architecture
-                        <span class="front-text">IoT Architecture</span>
-                    </button>
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Embedded Systems
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Hardware
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                IoT Architecture
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -508,18 +661,44 @@
                     Designed and built a Buck Converter to stably convert 15V to 5V. Handled hardware prototyping and system simulation. Successfully displayed real-time output voltage data directly on the Arduino IDE platform.
                 </div>
                 <div class="tags">
-                    <button class="button">
-                        Hardware Design
-                        <span class="front-text">Hardware Design</span>
-                    </button>
-                    <button class="button">
-                        Arduino IDE
-                        <span class="front-text">Arduino IDE</span>
-                    </button>
-                    <button class="button">
-                        Power Systems
-                        <span class="front-text">Power Systems</span>
-                    </button>
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Hardware Design
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Arduino IDE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Power Systems
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -535,18 +714,44 @@
                     Engineered an F450 drone chassis from scratch, executing precision soldering for all flight components. Calibrated P.I. Gain settings for aerodynamic stability. Mastered manual flight controls and showcased the prototype at the DIPEX competition (NIT Nagpur & SIPNA).
                 </div>
                 <div class="tags">
-                    <button class="button">
-                        Drone Calibration
-                        <span class="front-text">Drone Calibration</span>
-                    </button>
-                    <button class="button">
-                        Flight Controller
-                        <span class="front-text">Flight Controller</span>
-                    </button>
-                    <button class="button">
-                        Soldering
-                        <span class="front-text">Soldering</span>
-                    </button>
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Drone Calibration
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Flight Controller
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button class="real-button"></button>
+                        <div class="button-border">
+                            <div class="button">
+                                <div class="spin spin-blur"></div>
+                                <div class="spin spin-intense"></div>
+                                <div class="spin spin-inside"></div>
+                                <div class="backdrop"></div>
+                                Soldering
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -563,10 +768,18 @@
                         <strong>Subject Expertise:</strong> VLSI Design (97/100). Extensive training and remote internship focusing on embedded systems logic.
                     </div>
                     <div class="tags">
-                        <button class="button">
-                            VLSI
-                            <span class="front-text">VLSI</span>
-                        </button>
+                        <div class="button-container">
+                            <button class="real-button"></button>
+                            <div class="button-border">
+                                <div class="button">
+                                    <div class="spin spin-blur"></div>
+                                    <div class="spin spin-intense"></div>
+                                    <div class="spin spin-inside"></div>
+                                    <div class="backdrop"></div>
+                                    VLSI
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -577,14 +790,31 @@
                         Mastered programmable logic controllers (PLCs) including ladder logic sequencing. Engineered HMIs in Wonderware InTouch to monitor industrial processes.
                     </div>
                     <div class="tags">
-                        <button class="button">
-                            PLC Ladder Logic
-                            <span class="front-text">PLC Ladder Logic</span>
-                        </button>
-                        <button class="button">
-                            Wonderware HMI
-                            <span class="front-text">Wonderware HMI</span>
-                        </button>
+                        <div class="button-container">
+                            <button class="real-button"></button>
+                            <div class="button-border">
+                                <div class="button">
+                                    <div class="spin spin-blur"></div>
+                                    <div class="spin spin-intense"></div>
+                                    <div class="spin spin-inside"></div>
+                                    <div class="backdrop"></div>
+                                    PLC Ladder Logic
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-container">
+                            <button class="real-button"></button>
+                            <div class="button-border">
+                                <div class="button">
+                                    <div class="spin spin-blur"></div>
+                                    <div class="spin spin-intense"></div>
+                                    <div class="spin spin-inside"></div>
+                                    <div class="backdrop"></div>
+                                    Wonderware HMI
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -608,6 +838,19 @@
         </section>
 
     </div>
+
+    <!-- REQUIRED SVG FILTERS FOR BUTTON SPIN & NEON GLOW EFFECTS -->
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+        <filter id="unopaq">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 3 -1" />
+        </filter>
+        <filter id="unopaq2">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -1.5" />
+        </filter>
+        <filter id="unopaq3">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 8 -2" />
+        </filter>
+    </svg>
 
     <script>
         // Loader logic
