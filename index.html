@@ -9,16 +9,11 @@
             /* iOS System Colors & Glass variables */
             --text-main: #ffffff;
             --text-muted: rgba(235, 235, 245, 0.9);
-            --glass-bg: rgba(15, 20, 30, 0.65);
-            --glass-hover: rgba(25, 30, 45, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-border-highlight: rgba(255, 255, 255, 0.3);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-hover: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-border-highlight: rgba(255, 255, 255, 0.4);
             --card-radius: 28px;
-        }
-
-        /* 1. ENABLE NATIVE SMOOTH SCROLLING & GPU HARDWARE ACCELERATION */
-        html {
-            scroll-behavior: smooth;
         }
 
         * {
@@ -135,9 +130,8 @@
             width: auto;
             height: auto;
             z-index: -10;
-            transform: translate3d(-50%, -50%, 0); /* 60Hz/120Hz/144Hz Smooth transform */
+            transform: translateX(-50%) translateY(-50%);
             object-fit: cover;
-            will-change: transform;
         }
 
         .video-overlay {
@@ -161,13 +155,11 @@
         .bg-gradient-1 {
             position: absolute; top: -20%; left: -10%; width: 60vw; height: 60vh;
             background: radial-gradient(circle, rgba(0, 168, 255, 0.15) 0%, rgba(0,0,0,0) 70%); filter: blur(80px);
-            transform: translateZ(0);
         }
         
         .bg-gradient-2 {
             position: absolute; bottom: -20%; right: -10%; width: 70vw; height: 70vh;
             background: radial-gradient(circle, rgba(0, 80, 255, 0.2) 0%, rgba(0,0,0,0) 70%); filter: blur(90px);
-            transform: translateZ(0);
         }
 
         /* =========================================
@@ -203,7 +195,7 @@
 
         .contact-info {
             display: inline-flex; justify-content: flex-start; gap: 15px; flex-wrap: wrap; font-size: 0.95rem;
-            padding: 12px 24px; background: rgba(0, 0, 0, 0.45); 
+            padding: 12px 24px; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border); border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .contact-info span { color: #fff; display: flex; align-items: center; gap: 8px; }
@@ -219,7 +211,6 @@
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
             z-index: 0; box-shadow: 0 0 50px rgba(0, 168, 255, 0.5);
             animation: morph 6s ease-in-out infinite;
-            will-change: border-radius;
         }
 
         .header-image-container img {
@@ -227,7 +218,6 @@
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
             animation: morph 6s ease-in-out infinite;
             border: 3px solid rgba(255, 255, 255, 0.3);
-            will-change: border-radius;
         }
 
         @keyframes morph {
@@ -247,9 +237,8 @@
           border-radius: 32px;
           overflow: hidden;
           box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
-          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
           border: 2px solid rgb(255, 255, 255);
-          will-change: transform;
         }
 
         .social-card .background {
@@ -263,7 +252,7 @@
           position: absolute;
           right: 20px;
           top: 20px;
-          transition: transform 0.4s ease-in-out;
+          transition: all 0.6s ease-in-out;
           font-size: 1.1em;
           font-weight: 700;
           color: #ffffff;
@@ -286,7 +275,7 @@
           fill: rgba(255, 255, 255, 0.9);
           width: 100%;
           height: 100%;
-          transition: fill 0.3s ease-in-out;
+          transition: all 0.5s ease-in-out;
         }
 
         .social-card .box {
@@ -297,10 +286,9 @@
           border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
           box-shadow: rgba(100, 100, 111, 0.364) -7px 7px 29px 0px;
           transform-origin: bottom left;
-          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
           text-decoration: none;
           z-index: 3;
-          will-change: bottom, left;
         }
 
         .social-card .box::before {
@@ -309,7 +297,7 @@
           inset: 0;
           border-radius: inherit;
           opacity: 0;
-          transition: opacity 0.3s ease-in-out;
+          transition: all 0.5s ease-in-out;
           z-index: -1;
         }
 
@@ -318,7 +306,7 @@
           filter: drop-shadow(0 0 5px white);
         }
 
-        /* Box 1: LinkedIn */
+        /* Box 1: LinkedIn (Highest level icon) */
         .social-card .box1 {
           width: 78%;
           height: 78%;
@@ -334,13 +322,13 @@
           opacity: 1;
         }
 
-        /* Box 2: Gmail */
+        /* Box 2: Gmail (Middle level icon) */
         .social-card .box2 {
           width: 56%;
           height: 56%;
           bottom: -56%;
           left: -56%;
-          transition-delay: 0.05s;
+          transition-delay: 0.1s;
         }
 
         .social-card .box2::before {
@@ -351,13 +339,13 @@
           opacity: 1;
         }
 
-        /* Box 3: GitHub */
+        /* Box 3: GitHub (Lowest level icon) */
         .social-card .box3 {
           width: 34%;
           height: 34%;
           bottom: -34%;
           left: -34%;
-          transition-delay: 0.1s;
+          transition-delay: 0.2s;
         }
 
         .social-card .box3::before {
@@ -369,7 +357,7 @@
         }
 
         .social-card:hover {
-          transform: scale3d(1.05, 1.05, 1);
+          transform: scale(1.05);
         }
 
         .social-card:hover .box {
@@ -379,48 +367,26 @@
 
         /* --- Sections & Cards --- */
         section {
-            margin-top: 50px; 
-            opacity: 0; 
-            transform: translate3d(0, 30px, 0);
-            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            will-change: opacity, transform;
+            margin-top: 50px; opacity: 0; transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        section.visible { 
-            opacity: 1; 
-            transform: translate3d(0, 0, 0); 
-        }
+        section.visible { opacity: 1; transform: translateY(0); }
 
         h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; margin-left: 10px; color: #fff; letter-spacing: -0.02em; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
 
-        /* OPTIMIZED HIGH-PERFORMANCE CARD CLASS */
         .card {
-            background: var(--glass-bg); 
-            border: 1px solid var(--glass-border); 
-            border-top: 1px solid var(--glass-border-highlight);
-            border-radius: var(--card-radius);
-            padding: 32px; 
-            margin-bottom: 24px; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, border-color 0.3s ease; 
-            position: relative; 
-            overflow: hidden;
-            will-change: transform;
+            background: rgba(15, 20, 30, 0.25); 
+            backdrop-filter: blur(30px) saturate(120%); -webkit-backdrop-filter: blur(30px) saturate(120%);
+            border: 1px solid var(--glass-border); border-top: 1px solid var(--glass-border-highlight);
+            border-left: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--card-radius);
+            padding: 32px; margin-bottom: 24px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden;
         }
 
-        /* Desktop-only hover enhancements to save mobile rendering energy */
-        @media (hover: hover) and (pointer: fine) {
-            .card:hover {
-                transform: translate3d(0, -6px, 0); 
-                background: var(--glass-hover);
-                border-color: rgba(255, 255, 255, 0.4); 
-                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            }
-            /* Apply blur filter strictly on high-performance desktop hardware */
-            .card, .contact-info {
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-            }
+        .card:hover {
+            transform: translateY(-6px) scale(1.01); background: rgba(25, 30, 45, 0.35);
+            border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
@@ -428,8 +394,8 @@
         .card-subtitle { font-size: 1rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
         
         .card-date {
-            font-size: 0.85rem; font-weight: 600; color: #fff; background: rgba(0, 0, 0, 0.4);
-            padding: 6px 14px;
+            font-size: 0.85rem; font-weight: 600; color: #fff; background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px 14px;
             border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -1119,22 +1085,15 @@
             }, 2500); 
         });
 
-        // High-Refresh-Rate Optimized Scroll Observer
+        // Smooth reveal animation on scroll
         document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries, obs) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Request animation frame ensures render matches screen refresh rate (60Hz, 120Hz, or 144Hz)
-                        requestAnimationFrame(() => {
-                            entry.target.classList.add('visible');
-                        });
-                        obs.unobserve(entry.target); // Unobserve to free CPU resources after revealing
+                        entry.target.classList.add('visible');
                     }
                 });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }, { threshold: 0.15 });
 
             document.querySelectorAll('.scroll-anim').forEach((el) => {
                 observer.observe(el);
