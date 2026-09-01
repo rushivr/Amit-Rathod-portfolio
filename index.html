@@ -9,11 +9,15 @@
             /* iOS System Colors & Glass variables */
             --text-main: #ffffff;
             --text-muted: rgba(235, 235, 245, 0.9);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-hover: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-border-highlight: rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(15, 20, 30, 0.65);
+            --glass-hover: rgba(25, 30, 45, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-border-highlight: rgba(255, 255, 255, 0.3);
             --card-radius: 28px;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         * {
@@ -31,115 +35,92 @@
             overflow-x: hidden;
         }
 
-      /* From Uiverse.io by dexter-st */ 
-.loader-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  height: 180px;
-  font-family: "Inter", sans-serif;
-  font-size: 1.2em;
-  font-weight: 300;
-  color: white;
-  border-radius: 50%;
-  background-color: transparent;
-  user-select: none;
-}
+        /* =========================================
+           TERMINAL LOADING SCREEN & ANIMATION
+           ========================================= */
+        #loader-screen {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: 9999; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: #020813; 
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
 
-.loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background-color: transparent;
-  animation: loader-rotate 2s linear infinite;
-  z-index: 0;
-}
+        @keyframes blinkCursor {
+          50% { border-right-color: transparent; }
+        }
 
-@keyframes loader-rotate {
-  0% {
-    transform: rotate(90deg);
-    box-shadow:
-      0 10px 20px 0 #fff inset,
-      0 20px 30px 0 #ad5fff inset,
-      0 60px 60px 0 #471eec inset;
-  }
-  50% {
-    transform: rotate(270deg);
-    box-shadow:
-      0 10px 20px 0 #fff inset,
-      0 20px 10px 0 #d60a47 inset,
-      0 40px 60px 0 #311e80 inset;
-  }
-  100% {
-    transform: rotate(450deg);
-    box-shadow:
-      0 10px 20px 0 #fff inset,
-      0 20px 30px 0 #ad5fff inset,
-      0 60px 60px 0 #471eec inset;
-  }
-}
+        @keyframes typeAndDelete {
+          0%, 10% { width: 0; }
+          45%, 55% { width: 11em; }
+          90%, 100% { width: 0; }
+        }
 
-.loader-letter {
-  display: inline-block;
-  opacity: 0.4;
-  transform: translateY(0);
-  animation: loader-letter-anim 2s infinite;
-  z-index: 1;
-  border-radius: 50ch;
-  border: none;
-}
+        .terminal-loader {
+          border: 0.1em solid #333;
+          background-color: #1a1a1a;
+          color: #0f0;
+          font-family: "Courier New", Courier, monospace;
+          font-size: 1em;
+          padding: 1.5em 1em;
+          width: 16em;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+          position: relative;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
 
-.loader-letter:nth-child(1) {
-  animation-delay: 0s;
-}
-.loader-letter:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.loader-letter:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.loader-letter:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.loader-letter:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.loader-letter:nth-child(6) {
-  animation-delay: 0.5s;
-}
-.loader-letter:nth-child(7) {
-  animation-delay: 0.6s;
-}
-.loader-letter:nth-child(8) {
-  animation-delay: 0.7s;
-}
-.loader-letter:nth-child(9) {
-  animation-delay: 0.8s;
-}
-.loader-letter:nth-child(10) {
-  animation-delay: 0.9s;
-}
+        .terminal-header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1.5em;
+          background-color: #333;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+          padding: 0 0.4em;
+          box-sizing: border-box;
+        }
 
-@keyframes loader-letter-anim {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translateY(0);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  40% {
-    opacity: 0.7;
-    transform: translateY(0);
-  }
-}
+        .terminal-controls { float: right; }
+
+        .control {
+          display: inline-block;
+          width: 0.6em;
+          height: 0.6em;
+          margin-left: 0.4em;
+          border-radius: 50%;
+          background-color: #777;
+        }
+
+        .control.close { background-color: #e33; }
+        .control.minimize { background-color: #ee0; }
+        .control.maximize { background-color: #0b0; }
+
+        .terminal-title {
+          float: left;
+          line-height: 1.5em;
+          color: #eee;
+        }
+
+        .text {
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: 0.2em solid green;
+          animation:
+            typeAndDelete 4s steps(17) infinite,
+            blinkCursor 0.5s step-end infinite alternate;
+          margin-top: 1.5em;
+        }
 
         /* =========================================
            VIDEO BACKGROUND STYLES
@@ -153,8 +134,9 @@
             width: auto;
             height: auto;
             z-index: -10;
-            transform: translateX(-50%) translateY(-50%);
+            transform: translate3d(-50%, -50%, 0);
             object-fit: cover;
+            will-change: transform;
         }
 
         .video-overlay {
@@ -178,11 +160,13 @@
         .bg-gradient-1 {
             position: absolute; top: -20%; left: -10%; width: 60vw; height: 60vh;
             background: radial-gradient(circle, rgba(0, 168, 255, 0.15) 0%, rgba(0,0,0,0) 70%); filter: blur(80px);
+            transform: translateZ(0);
         }
         
         .bg-gradient-2 {
             position: absolute; bottom: -20%; right: -10%; width: 70vw; height: 70vh;
             background: radial-gradient(circle, rgba(0, 80, 255, 0.2) 0%, rgba(0,0,0,0) 70%); filter: blur(90px);
+            transform: translateZ(0);
         }
 
         /* =========================================
@@ -218,7 +202,7 @@
 
         .contact-info {
             display: inline-flex; justify-content: flex-start; gap: 15px; flex-wrap: wrap; font-size: 0.95rem;
-            padding: 12px 24px; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 12px 24px; background: rgba(0, 0, 0, 0.45); 
             border: 1px solid var(--glass-border); border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .contact-info span { color: #fff; display: flex; align-items: center; gap: 8px; }
@@ -234,6 +218,7 @@
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
             z-index: 0; box-shadow: 0 0 50px rgba(0, 168, 255, 0.5);
             animation: morph 6s ease-in-out infinite;
+            will-change: border-radius;
         }
 
         .header-image-container img {
@@ -241,6 +226,7 @@
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
             animation: morph 6s ease-in-out infinite;
             border: 3px solid rgba(255, 255, 255, 0.3);
+            will-change: border-radius;
         }
 
         @keyframes morph {
@@ -260,8 +246,9 @@
           border-radius: 32px;
           overflow: hidden;
           box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
-          transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
           border: 2px solid rgb(255, 255, 255);
+          will-change: transform;
         }
 
         .social-card .background {
@@ -275,7 +262,7 @@
           position: absolute;
           right: 20px;
           top: 20px;
-          transition: all 0.6s ease-in-out;
+          transition: transform 0.4s ease-in-out;
           font-size: 1.1em;
           font-weight: 700;
           color: #ffffff;
@@ -298,7 +285,7 @@
           fill: rgba(255, 255, 255, 0.9);
           width: 100%;
           height: 100%;
-          transition: all 0.5s ease-in-out;
+          transition: fill 0.3s ease-in-out;
         }
 
         .social-card .box {
@@ -309,9 +296,10 @@
           border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
           box-shadow: rgba(100, 100, 111, 0.364) -7px 7px 29px 0px;
           transform-origin: bottom left;
-          transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
           text-decoration: none;
           z-index: 3;
+          will-change: bottom, left;
         }
 
         .social-card .box::before {
@@ -320,7 +308,7 @@
           inset: 0;
           border-radius: inherit;
           opacity: 0;
-          transition: all 0.5s ease-in-out;
+          transition: opacity 0.3s ease-in-out;
           z-index: -1;
         }
 
@@ -329,7 +317,6 @@
           filter: drop-shadow(0 0 5px white);
         }
 
-        /* Box 1: LinkedIn (Highest level icon) */
         .social-card .box1 {
           width: 78%;
           height: 78%;
@@ -345,13 +332,12 @@
           opacity: 1;
         }
 
-        /* Box 2: Gmail (Middle level icon) */
         .social-card .box2 {
           width: 56%;
           height: 56%;
           bottom: -56%;
           left: -56%;
-          transition-delay: 0.1s;
+          transition-delay: 0.05s;
         }
 
         .social-card .box2::before {
@@ -362,13 +348,12 @@
           opacity: 1;
         }
 
-        /* Box 3: GitHub (Lowest level icon) */
         .social-card .box3 {
           width: 34%;
           height: 34%;
           bottom: -34%;
           left: -34%;
-          transition-delay: 0.2s;
+          transition-delay: 0.1s;
         }
 
         .social-card .box3::before {
@@ -380,7 +365,7 @@
         }
 
         .social-card:hover {
-          transform: scale(1.05);
+          transform: scale3d(1.05, 1.05, 1);
         }
 
         .social-card:hover .box {
@@ -390,26 +375,45 @@
 
         /* --- Sections & Cards --- */
         section {
-            margin-top: 50px; opacity: 0; transform: translateY(40px);
-            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+            margin-top: 50px; 
+            opacity: 0; 
+            transform: translate3d(0, 30px, 0);
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: opacity, transform;
         }
 
-        section.visible { opacity: 1; transform: translateY(0); }
+        section.visible { 
+            opacity: 1; 
+            transform: translate3d(0, 0, 0); 
+        }
 
         h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; margin-left: 10px; color: #fff; letter-spacing: -0.02em; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
 
         .card {
-            background: rgba(15, 20, 30, 0.25); 
-            backdrop-filter: blur(30px) saturate(120%); -webkit-backdrop-filter: blur(30px) saturate(120%);
-            border: 1px solid var(--glass-border); border-top: 1px solid var(--glass-border-highlight);
-            border-left: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--card-radius);
-            padding: 32px; margin-bottom: 24px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden;
+            background: var(--glass-bg); 
+            border: 1px solid var(--glass-border); 
+            border-top: 1px solid var(--glass-border-highlight);
+            border-radius: var(--card-radius);
+            padding: 32px; 
+            margin-bottom: 24px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, border-color 0.3s ease; 
+            position: relative; 
+            overflow: hidden;
+            will-change: transform;
         }
 
-        .card:hover {
-            transform: translateY(-6px) scale(1.01); background: rgba(25, 30, 45, 0.35);
-            border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1);
+        @media (hover: hover) and (pointer: fine) {
+            .card:hover {
+                transform: translate3d(0, -6px, 0); 
+                background: var(--glass-hover);
+                border-color: rgba(255, 255, 255, 0.4); 
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            }
+            .card, .contact-info {
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
         }
 
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
@@ -417,8 +421,8 @@
         .card-subtitle { font-size: 1rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
         
         .card-date {
-            font-size: 0.85rem; font-weight: 600; color: #fff; background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px 14px;
+            font-size: 0.85rem; font-weight: 600; color: #fff; background: rgba(0, 0, 0, 0.4);
+            padding: 6px 14px;
             border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -585,7 +589,7 @@
 </head>
 <body>
 
-    <!-- TERMINAL LOADING SCREEN -->
+    <!-- TERMINAL LOADING SCREEN WITH "Creating Visuals..." -->
     <div id="loader-screen">
         <div class="terminal-loader">
             <div class="terminal-header">
@@ -596,7 +600,7 @@
                     <div class="control maximize"></div>
                 </div>
             </div>
-            <div class="text">Loading...</div>
+            <div class="text">Creating Visuals...</div>
         </div>
     </div>
 
@@ -1110,13 +1114,19 @@
 
         // Smooth reveal animation on scroll
         document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        requestAnimationFrame(() => {
+                            entry.target.classList.add('visible');
+                        });
+                        obs.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
             document.querySelectorAll('.scroll-anim').forEach((el) => {
                 observer.observe(el);
